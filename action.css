@@ -1,0 +1,241 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  position: relative;
+  margin: 0;
+  background: linear-gradient(-90deg, #0d1c19 1px, transparent 1px),
+    linear-gradient(#0d1c19 1px, transparent 1px), #000a08;
+  background-size: 4em 4em;
+  font-size: 20px;
+}
+.console {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60em;
+  height: 39.8em;
+  border-width: 0.1em 0;
+  border-style: solid;
+  border-color: #abebde;
+  border-radius: 1em;
+  transform: translate(-50%, -50%);
+}
+.console::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.4em;
+  right: 0;
+  bottom: 0.4em;
+  left: 0;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #527a72;
+  border-radius: 1em;
+}
+.console-area {
+  position: absolute;
+  width: 15em;
+  height: 15em;
+  border: 0.1em solid #527a72;
+  perspective: 50em;
+}
+.console-area-top {
+  bottom: 22em;
+  border-top: none;
+  border-radius: 0 0 2em 2em;
+}
+.console-area-right {
+  right: 0;
+  border-left: none;
+}
+.console-area-bottom {
+  top: 22em;
+  border-bottom: none;
+  border-radius: 2em 2em 0 0;
+}
+.console-area-left {
+  left: 0;
+  border-right: none;
+}
+.console-ball {
+  position: relative;
+  top: 3em;
+  left: 1em;
+  width: 10em;
+  height: 10em;
+  transform-style: preserve-3d;
+  animation-name: ball;
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.console-ball .console-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0.2em dashed #527a72;
+  border-radius: 50%;
+}
+.console-ball .console-ring-1 {
+  transform: rotateY(30deg);
+}
+.console-ball .console-ring-2 {
+  transform: rotateY(60deg);
+}
+.console-ball .console-ring-3 {
+  transform: rotateY(90deg);
+}
+.console-ball .console-ring-4 {
+  transform: rotateY(120deg);
+}
+.console-ball .console-ring-5 {
+  transform: rotateY(150deg);
+}
+.console-ball .console-ring-6 {
+  transform: rotateY(180deg);
+}
+.console-ball .console-ring-7 {
+  transform: rotateY(210deg);
+}
+.console-ball .console-ring-8 {
+  transform: rotateY(240deg);
+}
+.console-ball .console-ring-9 {
+  transform: rotateY(270deg);
+}
+.console-ball .console-ring-10 {
+  transform: rotateY(300deg);
+}
+.console-ball .console-ring-11 {
+  transform: rotateY(330deg);
+}
+.console-centerpiece-corner,
+.console-centerpiece-corner::before {
+  position: absolute;
+  border-style: solid;
+  border-color: #527a72;
+}
+.console-centerpiece-corner {
+  top: 20em;
+  width: 14em;
+  height: 14em;
+}
+.console-centerpiece-corner::before {
+  content: "";
+  display: block;
+  top: -0.1em;
+  width: 8em;
+  height: 8em;
+}
+.console-centerpiece-corner-left {
+  border-width: 0.1em 0 0 0.1em;
+  left: 14em;
+  transform: rotate(-45deg) skew(-10deg, -10deg);
+  transform-origin: top left;
+}
+.console-centerpiece-corner-left::before {
+  left: -0.1em;
+  border-width: 0.4em 0 0 0.4em;
+}
+.console-centerpiece-corner-right {
+  border-width: 0.1em 0.1em 0 0;
+  right: 14em;
+  transform: rotate(45deg) skew(10deg, 10deg);
+  transform-origin: top right;
+}
+.console-centerpiece-corner-right::before {
+  right: -0.1em;
+  border-width: 0.4em 0.4em 0 0;
+}
+.console-centerpiece {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 20em;
+  height: 20em;
+  transform: translate(-50%, -50%);
+}
+.console-centerpiece::before,
+.console-centerpiece::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  border: 0.8em solid #005f4c;
+  border-left-width: 0;
+  border-bottom-width: 0;
+  border-radius: 0 100% 0 0;
+  opacity: 0.6;
+  animation-name: centerpiece;
+  animation-duration: 16s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: bottom left;
+}
+.console-centerpiece::after {
+  padding: 0.3em;
+  animation-delay: -4s;
+  animation-direction: reverse;
+}
+.console-centerpiece .console-ring,
+.console-centerpiece .console-ring::before,
+.console-centerpiece .console-ring::after {
+  position: absolute;
+  border: 0.4em solid #005f4c;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.console-centerpiece .console-ring {
+  padding: 1em;
+}
+.console-centerpiece .console-ring::before,
+.console-centerpiece .console-ring::after {
+  content: "";
+  display: block;
+}
+.console-centerpiece .console-ring::before {
+  margin: -2em;
+  opacity: 0.2;
+}
+.console-centerpiece .console-ring::after {
+  margin: 1em;
+  opacity: 0.8;
+}
+@keyframes ball {
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+@keyframes centerpiece {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(270deg);
+  }
+  40% {
+    transform: rotate(390deg);
+  }
+  60% {
+    transform: rotate(630deg);
+  }
+  80% {
+    transform: rotate(720deg);
+  }
+  100% {
+    transform: rotate(1080deg);
+  }
+}
