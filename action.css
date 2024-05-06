@@ -61,6 +61,39 @@ body {
   left: 0;
   border-right: none;
 }
+.console-bars {
+  list-style-type: none;
+  position: relative;
+  top: 4em;
+  left: 3em;
+  padding: 0;
+}
+.console-bars li {
+  height: 0.5em;
+  margin: 1em 0;
+  background: linear-gradient(90deg, #005f4c 2em, transparent 1em);
+  background-size: 3em;
+  opacity: 0.6;
+  animation-name: bar;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-timing-function: step-end;
+}
+.console-bars li:nth-child(2) {
+  animation-delay: -2s;
+}
+.console-bars li:nth-child(3) {
+  animation-delay: -4s;
+}
+.console-bars li:nth-child(4) {
+  animation-delay: -6s;
+}
+.console-bars li:nth-child(5) {
+  animation-delay: -8s;
+}
+.console-bars li:nth-child(6) {
+  animation-delay: -10s;
+}
 .console-ball {
   position: relative;
   top: 3em;
@@ -73,46 +106,46 @@ body {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-.console-ball .console-ring {
+.console-ball div {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  border: 0.2em dashed #527a72;
+  border: 0.2em dashed #005f4c;
   border-radius: 50%;
 }
-.console-ball .console-ring-1 {
+.console-ball div:nth-child(2) {
   transform: rotateY(30deg);
 }
-.console-ball .console-ring-2 {
+.console-ball div:nth-child(3) {
   transform: rotateY(60deg);
 }
-.console-ball .console-ring-3 {
+.console-ball div:nth-child(4) {
   transform: rotateY(90deg);
 }
-.console-ball .console-ring-4 {
+.console-ball div:nth-child(5) {
   transform: rotateY(120deg);
 }
-.console-ball .console-ring-5 {
+.console-ball div:nth-child(6) {
   transform: rotateY(150deg);
 }
-.console-ball .console-ring-6 {
+.console-ball div:nth-child(7) {
   transform: rotateY(180deg);
 }
-.console-ball .console-ring-7 {
+.console-ball div:nth-child(8) {
   transform: rotateY(210deg);
 }
-.console-ball .console-ring-8 {
+.console-ball div:nth-child(9) {
   transform: rotateY(240deg);
 }
-.console-ball .console-ring-9 {
+.console-ball div:nth-child(10) {
   transform: rotateY(270deg);
 }
-.console-ball .console-ring-10 {
+.console-ball div:nth-child(11) {
   transform: rotateY(300deg);
 }
-.console-ball .console-ring-11 {
+.console-ball div:nth-child(12) {
   transform: rotateY(330deg);
 }
 .console-centerpiece-corner,
@@ -176,7 +209,7 @@ body {
   border-bottom-width: 0;
   border-radius: 0 100% 0 0;
   opacity: 0.6;
-  animation-name: centerpiece;
+  animation-name: ring;
   animation-duration: 16s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -187,9 +220,9 @@ body {
   animation-delay: -4s;
   animation-direction: reverse;
 }
-.console-centerpiece .console-ring,
-.console-centerpiece .console-ring::before,
-.console-centerpiece .console-ring::after {
+.console-centerpiece div,
+.console-centerpiece div::before,
+.console-centerpiece div::after {
   position: absolute;
   border: 0.4em solid #005f4c;
   border-radius: 50%;
@@ -198,19 +231,19 @@ body {
   bottom: 0;
   left: 0;
 }
-.console-centerpiece .console-ring {
+.console-centerpiece div {
   padding: 1em;
 }
-.console-centerpiece .console-ring::before,
-.console-centerpiece .console-ring::after {
+.console-centerpiece div::before,
+.console-centerpiece div::after {
   content: "";
   display: block;
 }
-.console-centerpiece .console-ring::before {
+.console-centerpiece div::before {
   margin: -2em;
   opacity: 0.2;
 }
-.console-centerpiece .console-ring::after {
+.console-centerpiece div::after {
   margin: 1em;
   opacity: 0.8;
 }
@@ -219,7 +252,69 @@ body {
     transform: rotateX(360deg) rotateY(360deg);
   }
 }
-@keyframes centerpiece {
+@keyframes bar {
+  0% {
+    width: 2em;
+    opacity: 0.6;
+  }
+  10% {
+    width: 5em;
+  }
+  17% {
+    width: 11em;
+  }
+  20% {
+    width: 5em;
+    opacity: 0.4;
+  }
+  27% {
+    width: 11em;
+  }
+  30% {
+    width: 5em;
+  }
+  40% {
+    width: 11em;
+  }
+  47% {
+    width: 8em;
+    opacity: 0.6;
+  }
+  50% {
+    width: 11em;
+    opacity: 0.4;
+  }
+  57% {
+    width: 5em;
+  }
+  60% {
+    width: 8em;
+    opacity: 0.6;
+  }
+  67% {
+    width: 2em;
+    opacity: 0.4;
+  }
+  70% {
+    width: 5em;
+    opacity: 0.6;
+  }
+  80% {
+    width: 11em;
+    opacity: 0.4;
+  }
+  87% {
+    width: 5em;
+  }
+  90% {
+    width: 2em;
+  }
+  97% {
+    width: 5em;
+    opacity: 0.6;
+  }
+}
+@keyframes ring {
   0% {
     transform: rotate(0deg);
   }
