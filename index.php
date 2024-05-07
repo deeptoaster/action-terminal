@@ -21,8 +21,26 @@ if (isset($_POST['code'])) {
   </head>
   <body>
     <div class="console">
-      <div class="console-area console-area-top console-area-left"></div>
-      <div class="console-area console-area-top console-area-right"></div>
+      <div class="console-area console-area-top console-area-left">
+        <div class="console-scope">
+          <ul class="console-waves">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+      <div class="console-area console-area-top console-area-right">
+        <div class="console-holo"></div>
+      </div>
       <div class="console-area console-area-bottom console-area-left">
         <ul class="console-bars">
           <li></li>
@@ -34,20 +52,20 @@ if (isset($_POST['code'])) {
         </ul>
       </div>
       <div class="console-area console-area-bottom console-area-right">
-        <div class="console-ball">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        <ul class="console-ball">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div class="console-centerpiece-corner console-centerpiece-corner-left"></div>
       <div class="console-centerpiece-corner console-centerpiece-corner-right"></div>
