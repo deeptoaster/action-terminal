@@ -12,29 +12,42 @@ body {
   font-size: 20px;
 }
 .console,
-.console::after {
+.console::after,
+.console-input,
+.console-input::after {
   position: absolute;
   border-style: solid;
   border-radius: 1em;
-  animation-duration: 800ms;
   animation-fill-mode: both;
 }
-.console {
+.console,
+.console::after,
+.console-input::after {
+  animation-duration: 800ms;
+}
+.console,
+.console-input {
   top: 50%;
   left: 50%;
   border-width: 0.1em 0;
-  border-color: #abebde;
   transform: translate(-50%, -50%);
+}
+.console {
+  border-color: #abebde;
   animation-name: console;
 }
-.console::after {
+.console::after,
+.console-input::after {
   content: "";
   display: block;
+  z-index: -1;
   right: 0;
   left: 0;
   border-width: 1px 0;
+  animation-name: inner;
+}
+.console::after {
   border-color: #527a72;
-  animation-name: console-inner;
   animation-delay: 300ms;
 }
 .console-area {
@@ -75,13 +88,16 @@ body {
 .console-area-bottom.console-area-right {
   animation-delay: 1100ms;
 }
-.console-content {
-  animation-name: content;
+.console-content,
+.console-input input {
+  animation-name: flash;
   animation-duration: 100ms;
-  animation-delay: 1700ms;
   animation-iteration-count: 3;
   animation-timing-function: linear;
   animation-fill-mode: both;
+}
+.console-content {
+  animation-delay: 1700ms;
 }
 .console-scope {
   position: relative;
@@ -174,7 +190,7 @@ body {
 .console-bars li {
   height: 0.5em;
   margin: 1em 0;
-  background: linear-gradient(90deg, #005f4c 2em, transparent 1em);
+  background-image: linear-gradient(90deg, #005f4c 2em, transparent 1em);
   background-size: 3em;
   opacity: 0.6;
   animation-name: bar;
@@ -358,6 +374,69 @@ body {
   margin: 1em;
   opacity: 0.8;
 }
+.console-input {
+  border-color: #ffa870;
+  animation-name: flash, form;
+  animation-delay: 2000ms, 2100ms;
+  animation-duration: 100ms, 800ms;
+}
+.console-input.error {
+  animation-name: flash, form, shake;
+  animation-delay: 2000ms, 2100ms, 0ms;
+  animation-duration: 100ms, 800ms, 800ms;
+}
+.console-input::before {
+  content: "Enter Code";
+  display: block;
+  position: absolute;
+  top: -1.5em;
+  left: 50%;
+  height: 1em;
+  overflow: hidden;
+  color: #ffa870;
+  text-align: center;
+  text-transform: uppercase;
+  word-break: break-all;
+  font-size: 2em;
+  font-family: "Audiowide";
+  transform: translateX(-50%);
+  animation-name: type;
+  animation-duration: 1200ms;
+  animation-delay: 2700ms;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+.console-input.error::before {
+  content: "Wrong Code";
+}
+.console-input::after {
+  border-color: #a74200;
+  animation-delay: 2400ms;
+}
+.console-input form {
+  position: absolute;
+  top: 1em;
+  right: 2em;
+  bottom: 1em;
+  left: 2em;
+}
+.console-input input {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0 -0.3125em;
+  border: none;
+  outline: none;
+  padding: 0.3125em;
+  background-color: rgba(217, 85, 0, 0.8);
+  color: #ffc8a4;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3.2em;
+  line-height: 1.25;
+  font-family: "Share Tech Mono", monospace;
+  animation-delay: 3600ms;
+}
 @keyframes ball {
   100% {
     transform: rotateX(360deg) rotateY(360deg);
@@ -461,24 +540,6 @@ body {
     height: 39.8em;
   }
 }
-@keyframes console-inner {
-  0% {
-    top: 50%;
-    bottom: 50%;
-  }
-  100% {
-    top: 0.4em;
-    bottom: 0.4em;
-  }
-}
-@keyframes content {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
 @keyframes corner {
   0% {
     width: 0;
@@ -487,6 +548,14 @@ body {
   100% {
     width: 14em;
     height: 14em;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
   }
 }
 @keyframes holo-cap {
@@ -553,6 +622,30 @@ body {
       -0.2em 0 0.4em -0.2em #005f4c;
   }
 }
+@keyframes form {
+  0% {
+    width: 2em;
+    height: 2em;
+  }
+  50% {
+    width: 40em;
+    height: 2em;
+  }
+  100% {
+    width: 40em;
+    height: 8em;
+  }
+}
+@keyframes inner {
+  0% {
+    top: 50%;
+    bottom: 50%;
+  }
+  100% {
+    top: 0.4em;
+    bottom: 0.4em;
+  }
+}
 @keyframes ring {
   0% {
     transform: rotate(0deg);
@@ -571,6 +664,34 @@ body {
   }
   100% {
     transform: rotate(1080deg);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  20% {
+    transform: translate(-55%, -50%);
+  }
+  40% {
+    transform: translate(-45%, -50%);
+  }
+  60% {
+    transform: translate(-55%, -50%);
+  }
+  80% {
+    transform: translate(-45%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 8em;
   }
 }
 @keyframes waves {

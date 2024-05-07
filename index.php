@@ -1,9 +1,10 @@
 <?
 if (isset($_POST['code'])) {
   $codes = json_decode(file_get_contents('codes.json'), true);
+  $code = strtolower($_POST['code']);
 
-  if (array_key_exists($_POST['code'], $codes)) {
-    die($codes[$_POST['code']]);
+  if (array_key_exists($code, $codes)) {
+    die($codes[$code]);
   } else {
     header('HTTP/1.1 403 Forbidden');
     die();
@@ -79,6 +80,11 @@ if (isset($_POST['code'])) {
       <div class="console-centerpiece-corner console-centerpiece-corner-right"></div>
       <div class="console-centerpiece">
         <div></div>
+      </div>
+      <div class="console-input">
+        <form action="./" method="post">
+          <input autocomplete="off" type="text" name="code" />
+        </form>
       </div>
     </div>
   </body>
