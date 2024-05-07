@@ -11,37 +11,39 @@ body {
   background-size: 4em 4em;
   font-size: 20px;
 }
-.console {
+.console,
+.console::after {
   position: absolute;
+  border-style: solid;
+  border-radius: 1em;
+  animation-duration: 800ms;
+  animation-fill-mode: both;
+}
+.console {
   top: 50%;
   left: 50%;
-  width: 60em;
-  height: 39.8em;
   border-width: 0.1em 0;
-  border-style: solid;
   border-color: #abebde;
-  border-radius: 1em;
   transform: translate(-50%, -50%);
+  animation-name: console;
 }
 .console::after {
   content: "";
   display: block;
-  position: absolute;
-  top: 0.4em;
   right: 0;
-  bottom: 0.4em;
   left: 0;
   border-width: 1px 0;
-  border-style: solid;
   border-color: #527a72;
-  border-radius: 1em;
+  animation-name: console-inner;
+  animation-delay: 300ms;
 }
 .console-area {
   position: absolute;
-  width: 15em;
-  height: 15em;
   border: 0.1em solid #527a72;
   perspective: 50em;
+  animation-name: area;
+  animation-duration: 600ms;
+  animation-fill-mode: both;
 }
 .console-area-top {
   bottom: 22em;
@@ -60,6 +62,26 @@ body {
 .console-area-left {
   left: 0;
   border-right: none;
+}
+.console-area-top.console-area-left {
+  animation-delay: 1000ms;
+}
+.console-area-top.console-area-right {
+  animation-delay: 800ms;
+}
+.console-area-bottom.console-area-left {
+  animation-delay: 900ms;
+}
+.console-area-bottom.console-area-right {
+  animation-delay: 1100ms;
+}
+.console-content {
+  animation-name: content;
+  animation-duration: 100ms;
+  animation-delay: 1700ms;
+  animation-iteration-count: 3;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
 }
 .console-scope {
   position: relative;
@@ -240,8 +262,11 @@ body {
 }
 .console-centerpiece-corner {
   top: 20em;
-  width: 14em;
-  height: 14em;
+  overflow: hidden;
+  animation-name: corner;
+  animation-duration: 600ms;
+  animation-delay: 1200ms;
+  animation-fill-mode: both;
 }
 .console-centerpiece-corner::before {
   content: "";
@@ -275,9 +300,11 @@ body {
   z-index: -1;
   top: 50%;
   left: 50%;
-  width: 20em;
-  height: 20em;
   transform: translate(-50%, -50%);
+  animation-name: centerpiece;
+  animation-duration: 600ms;
+  animation-delay: 1400ms;
+  animation-fill-mode: both;
 }
 .console-centerpiece::before,
 .console-centerpiece::after {
@@ -396,6 +423,70 @@ body {
   97% {
     width: 5em;
     opacity: 0.6;
+  }
+}
+@keyframes area {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 15em;
+    height: 15em;
+  }
+}
+@keyframes centerpiece {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 20em;
+    height: 20em;
+    opacity: 1;
+  }
+}
+@keyframes console {
+  0% {
+    width: 2em;
+    height: 2em;
+  }
+  50% {
+    width: 60em;
+    height: 2em;
+  }
+  100% {
+    width: 60em;
+    height: 39.8em;
+  }
+}
+@keyframes console-inner {
+  0% {
+    top: 50%;
+    bottom: 50%;
+  }
+  100% {
+    top: 0.4em;
+    bottom: 0.4em;
+  }
+}
+@keyframes content {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes corner {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 14em;
+    height: 14em;
   }
 }
 @keyframes holo-cap {
