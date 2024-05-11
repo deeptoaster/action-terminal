@@ -22,12 +22,15 @@ window.onload = function () {
       );
 
       request.send("code=" + encodeURIComponent(input));
-      console.log(forms, formIndex);
 
       request.onreadystatechange = function () {
         if (request.readyState === 4) {
           switch (request.status) {
             case 200:
+              form.getElementsByTagName("p")[0].textContent =
+                request.responseText;
+              form.className = "console-input success";
+              console.log(form);
               break;
             case 403:
               form.className = "console-input error";

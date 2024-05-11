@@ -85,6 +85,7 @@ if (isset($_POST['code'])) {
         <form action="./" method="post">
           <input autocomplete="off" type="text" name="code" />
         </form>
+        <p></p>
       </div>
     </div>
   </body>

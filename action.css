@@ -6,10 +6,12 @@ body {
 body {
   position: relative;
   margin: 0;
+  overflow: hidden;
   background: linear-gradient(-90deg, #0d1c19 1px, transparent 1px),
     linear-gradient(#0d1c19 1px, transparent 1px), #000a08;
   background-size: 4em 4em;
-  font-size: 20px;
+  font-size: 1.6vw;
+  font-family: "Share Tech Mono", monospace;
 }
 .console,
 .console::after,
@@ -89,11 +91,12 @@ body {
   animation-delay: 1100ms;
 }
 .console-content,
-.console-input input {
+.console-input input,
+.console-input.success p {
   animation-name: flash;
   animation-duration: 100ms;
-  animation-iteration-count: 3;
   animation-timing-function: linear;
+  animation-iteration-count: 3;
   animation-fill-mode: both;
 }
 .console-content {
@@ -116,8 +119,8 @@ body {
   transform-origin: top left;
   animation-name: waves;
   animation-duration: 3s;
-  animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 .console-waves li {
   position: relative;
@@ -195,8 +198,8 @@ body {
   opacity: 0.6;
   animation-name: bar;
   animation-duration: 6s;
-  animation-iteration-count: infinite;
   animation-timing-function: step-end;
+  animation-iteration-count: infinite;
 }
 .console-bars li:nth-child(2) {
   animation-delay: -1s;
@@ -376,6 +379,7 @@ body {
 }
 .console-input {
   border-color: #ffa870;
+  color: #ffa870;
   animation-name: flash, form;
   animation-delay: 2000ms, 2100ms;
   animation-duration: 100ms, 800ms;
@@ -393,7 +397,6 @@ body {
   left: 50%;
   height: 1em;
   overflow: hidden;
-  color: #ffa870;
   text-align: center;
   text-transform: uppercase;
   word-break: break-all;
@@ -409,6 +412,9 @@ body {
 .console-input.error::before {
   content: "Wrong Code";
 }
+.console-input.success::before {
+  content: "Accepted";
+}
 .console-input::after {
   border-color: #a74200;
   animation-delay: 2400ms;
@@ -419,6 +425,12 @@ body {
   right: 2em;
   bottom: 1em;
   left: 2em;
+}
+.console-input.success form {
+  animation-name: flash;
+  animation-duration: 300ms;
+  animation-direction: reverse;
+  animation-fill-mode: both;
 }
 .console-input input {
   position: relative;
@@ -434,8 +446,30 @@ body {
   text-transform: uppercase;
   font-size: 3.2em;
   line-height: 1.25;
-  font-family: "Share Tech Mono", monospace;
+  font-family: inherit;
   animation-delay: 3600ms;
+}
+.console-input p {
+  display: none;
+  position: absolute;
+  top: 0.8em;
+  right: 0.8em;
+  bottom: 0.8em;
+  left: 0.8em;
+  z-index: 1;
+  margin: 0;
+  padding: 0.4em;
+  background-color: rgba(167, 66, 0, 0.6);
+  font-size: 1.25em;
+}
+.console-input.success p {
+  display: block;
+  animation-delay: 300ms;
+}
+@media (min-aspect-ratio: 3/2) {
+  body {
+    font-size: 2.4vh;
+  }
 }
 @keyframes ball {
   100% {
